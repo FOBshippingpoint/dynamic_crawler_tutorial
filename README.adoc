@@ -32,14 +32,15 @@ playwright install chromium
 
 [source,console]
 ----
-docker run -it --ipc=host -v="<本專案在你的電腦的目錄, e.g.: C:\Users\blueb\Repo\dynamic_crawler_venv\tutorial\>":/var mcr.microsoft.com/playwright/python:v1.35.0-jammy tail -f /dev/null
+docker run -it --ipc=host -v="<本專案在你的電腦的目錄, e.g.: C:\Users\blueb\Repo\dynamic_crawler_venv\dynamic_crawler_tutorial
+\>":/var mcr.microsoft.com/playwright/python:v1.35.0-jammy tail -f /dev/null
 ----
 
 [source,console]
 ----
 docker exec -it <container id or name> /bin/bash
 # 進入容器裡面
-cd /var/tutorial # 進入本專案目錄（容器中的在/var/tutorial，已經和本機的專案目錄連在一起了）
+cd /var/dynamic_crawler_tutorial # 進入本專案目錄（容器中的在/var/dynamic_crawler_tutorial, 已經和本機的專案目錄連在一起了）
 pip install scrapy-playwright # 安裝套件
 playwright install chromium # 安裝瀏覽器driver
 ----
