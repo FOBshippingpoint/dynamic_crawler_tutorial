@@ -1,0 +1,64 @@
+= Scrapy & Playwright 爬蟲
+CC Lan <https://github.com/FOBshippingpoint[@FOBshippingpoint]>
+v1.0, 2023-08-09
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:toc:
+:toc-title: 目錄
+:toc-placement!:
+toc::[]
+
+== 安裝環境
+
+=== Linux, Mac
+
+[source,console]
+----
+# 進入虛擬環境
+pip install scrapy-playwright
+playwright install chromium
+----
+
+=== Windows
+
+因為Windows沒辦法直接用scrapy-playwright，所以要退一步用docker。
+
+[source,console]
+----
+docker run -it --ipc=host -v="<本專案在你的電腦的目錄, e.g.: C:\Users\blueb\Repo\dynamic_crawler_venv\tutorial\>":/var mcr.microsoft.com/playwright/python:v1.35.0-jammy tail -f /dev/null
+----
+
+[source,console]
+----
+docker exec -it <container id or name> /bin/bash
+# 進入容器裡面
+cd /var/tutorial # 進入本專案目錄（容器中的在/var/tutorial，已經和本機的專案目錄連在一起了）
+pip install scrapy-playwright # 安裝套件
+playwright install chromium # 安裝瀏覽器driver
+----
+
+== 執行
+
+=== 名言佳句
+
+[source,console]
+----
+# 爬 quote 這隻爬蟲並輸出到 results.json（和settings.py檔案同一個階層）
+scrapy crawl quote -O results.json
+----
+
+=== Google評論
+
+[source,console]
+----
+scrapy crawl googlereview -O results.json
+----
+
+WARNING: 這支程式會存瀏覽器執行過程影片到tutorial目錄底下
